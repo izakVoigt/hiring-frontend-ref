@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     transition: 0.3s;
   }
   main {
-    padding: 20px;
+    padding: 10px;
     display: flex;
   }
   ::-webkit-scrollbar {
