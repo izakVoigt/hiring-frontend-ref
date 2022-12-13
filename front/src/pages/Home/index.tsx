@@ -1,10 +1,12 @@
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import { DataComponent } from "../../components";
+import { DataDashboard } from "../../components/DataDashboard";
 import { Header, Nav } from "../../compound";
-import { Container, DataWraper } from "./styles";
+import { Container, DataWraper, Title } from "./styles";
 
 const data = [
   {
@@ -41,17 +43,75 @@ const data = [
   },
 ];
 
+const dataDash = [
+  {
+    data: {
+      name: "Vale",
+      prices: [
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+      ],
+    },
+    color: "#00ff00",
+    title: "Resultado",
+    percentage: 2.18,
+    desc: "desde 01/12/2022",
+  },
+  {
+    data: {
+      name: "Vale",
+      prices: [
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+      ],
+    },
+    color: "#00ff00",
+    title: "Resultado",
+    percentage: 2.18,
+    desc: "desde 01/12/2022",
+  },
+  {
+    data: {
+      name: "Vale",
+      prices: [
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
+      ],
+    },
+    color: "#00ff00",
+    title: "Resultado",
+    percentage: 2.18,
+    desc: "desde 01/12/2022",
+  },
+];
+
 export const Home = () => {
   return (
     <>
       <Nav />
       <Container>
         <Header />
+        <Title>
+          <DashboardIcon />
+          DASHBOARD
+        </Title>
         <DataWraper>
           {data.map((item, key) => (
-            <DataComponent svg={item.element} color={item.color} title={item.title} value={item.value} percentage={item.percentage} desc={item.desc} />
+            <DataComponent key={key} svg={item.element} color={item.color} title={item.title} value={item.value} percentage={item.percentage} desc={item.desc} />
           ))}
         </DataWraper>
+        <DataWraper>
+          {dataDash.map((item, key) => (
+            <DataDashboard key={key} data={item.data} color={item.color} title={item.title} percentage={item.percentage} desc={item.desc} />
+          ))}
+        </DataWraper>
+        <Title>
+          <ShowChartIcon />
+          PROJEÇÃO DE GANHOS
+        </Title>
       </Container>
     </>
   );

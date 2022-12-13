@@ -14,13 +14,28 @@ export const Container = styled.section`
 
 export const DataWraper = styled.div`
   width: 100%;
-  margin-top: 40px;
+  margin: 20px 0;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 20px;
   flex-wrap: wrap;
 
   @media (max-width: 800px) {
     gap: 40px;
+  }
+`;
+
+export const Title = styled.h2`
+  margin: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: ${(props) => props.theme.colors.fontDefault};
+  font-size: 18px;
+
+  svg {
+    fill: ${(props) => props.theme.colors.fontDefault};
   }
 `;
