@@ -12,6 +12,15 @@ export const Container = styled.section`
   }
 `;
 
-export const Teste = styled.div`
-  height: 3000px;
+export const DataWraper = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    gap: 40px;
+  }
 `;
