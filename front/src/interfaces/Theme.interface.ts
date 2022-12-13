@@ -3,8 +3,8 @@ export interface Theme {
   colors: {
     primary: string;
     secundary: string;
-    terciary: string;
-    details: string;
+    tertiary: string;
+    detail: string;
     fontDefault: string;
     fontText: string;
     fontReverse: string;
