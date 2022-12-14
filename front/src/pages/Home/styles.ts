@@ -72,7 +72,7 @@ export const Input = styled.input`
     outline: none;
 
     @media (max-width: 800px) {
-      width: 100px;
+      width: 40%;
     }
   }
 `;

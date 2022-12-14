@@ -42,7 +42,6 @@ export const Home = () => {
         toast.error(err);
       });
   };
-
   const getCalcData = async () => {
     if (searchDate === "") {
       toast.error("Informe uma data");

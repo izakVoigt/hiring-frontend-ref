@@ -5,12 +5,26 @@ export const Container = styled.div`
   padding: 10px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.tertiary};
+
+  @media (max-width: 800px) {
+    width: 230px;
+  }
+  @media (max-width: 1000px) {
+    width: 240px;
+  }
 `;
 
 export const DashboardContainer = styled.div`
   width: 100%;
   height: 190px;
   border-radius: 10px;
+
+  @media (max-width: 800px) {
+    height: 120px;
+  }
+  @media (max-width: 1000px) {
+    height: 160px;
+  }
 `;
 
 export const Title = styled.p`

@@ -29,7 +29,7 @@ export const Compare = () => {
 
   const getPrices = async () => {
     if (stockList.length <= 1) {
-      toast.info("Selecione uma ou mais ações para comparar");
+      toast.info("Selecione duas ou mais ações para comparar");
       return;
     }
 

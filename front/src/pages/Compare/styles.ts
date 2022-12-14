@@ -34,6 +34,10 @@ export const DataWraper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const DataContainer = styled.div`
@@ -51,6 +55,10 @@ export const DashboardContainer = styled.div`
   height: 460px;
   border-radius: 10px;
   background: linear-gradient(#6666ff, #1919ff);
+
+  @media (max-width: 800px) {
+    height: 280px;
+  }
 `;
 
 export const StockAdder = styled.div`
@@ -64,6 +72,12 @@ export const StockAdder = styled.div`
   gap: 10px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.tertiary};
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
 `;
 
 export const InputWraper = styled.div`
@@ -83,7 +97,7 @@ export const Input = styled.input`
   outline: none;
 
   @media (max-width: 800px) {
-    width: 230px;
+    width: 100%;
   }
 `;
 

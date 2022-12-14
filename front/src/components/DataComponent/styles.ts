@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.colors.tertiary};
 
   @media (max-width: 800px) {
-    width: 200px;
+    width: 240px;
     height: 110px;
   }
 `;
