@@ -1,10 +1,9 @@
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
-import { DataComponent } from "../../components";
-import { DataDashboard } from "../../components/DataDashboard";
+import { DataComponent, DataDashboard, DataProjection } from "../../components";
 import { Header, Nav } from "../../compound";
 import { Container, DataWraper, Title } from "./styles";
 
@@ -88,6 +87,15 @@ const dataDash = [
   },
 ];
 
+const dataGain = {
+  name: "vale",
+  lastPrice: 16.12,
+  priceAtDate: 16.32,
+  purchasedAmount: 10,
+  purchasedAt: "2022-12-06",
+  capitalGains: -0.598764,
+};
+
 export const Home = () => {
   return (
     <>
@@ -100,18 +108,38 @@ export const Home = () => {
         </Title>
         <DataWraper>
           {data.map((item, key) => (
-            <DataComponent key={key} svg={item.element} color={item.color} title={item.title} value={item.value} percentage={item.percentage} desc={item.desc} />
+            <DataComponent
+              key={key}
+              svg={item.element}
+              color={item.color}
+              title={item.title}
+              value={item.value}
+              percentage={item.percentage}
+              desc={item.desc}
+            />
           ))}
         </DataWraper>
         <DataWraper>
           {dataDash.map((item, key) => (
-            <DataDashboard key={key} data={item.data} color={item.color} title={item.title} percentage={item.percentage} desc={item.desc} />
+            <DataDashboard
+              key={key}
+              data={item.data}
+              color={item.color}
+              title={item.title}
+              percentage={item.percentage}
+              desc={item.desc}
+            />
           ))}
         </DataWraper>
         <Title>
           <ShowChartIcon />
           PROJEÇÃO DE GANHOS
         </Title>
+        <DataWraper>
+          <DataProjection data={dataDash[0].data} calc={dataGain} color="#00ff00">
+            <div></div>
+          </DataProjection>
+        </DataWraper>
       </Container>
     </>
   );
