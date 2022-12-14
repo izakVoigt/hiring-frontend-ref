@@ -1,29 +1,88 @@
-# Descrição
+## Frontend
 
-Uma corretora de ações está desenvolvendo um sistema para permitir que pequenos investidores possam tomar decisões melhores sobre seu portfólio. Uma das funcionalidades importantes é a de verificar o desempenho de uma ação nos seguintes cenários:
+Projeto utilizando React.js, Typescript, Jest, Material UI, Axios, Moment.js, Recharts, Styled-Components.
 
-   - Preço atual;
-   - Preço histórico;
-   - Preço atual em comparação a outras ações;
-   - Projeção de ganhos com compra em data específica.
+### Pré-requisitos
 
-Para isso, a equipe de software da empresa optou por desenvolver duas aplicações: um serviço de backend especializado nesses requisitos (que permitirá que essas funcionalidades sejam reutilizadas em outros produtos da empresa) e um dashboard configurável que dará visibilidade aos dados. Sua missão para este teste é implementar o frontend dessas partes.
+- Antes de rodar o projeto certifique se você tem o git e o node instalados em sua maquina rodando os seguintes comandos:
+  **git --version** e **node -v** respectivamente, caso não tenha instale antes de ir para o próximo passo.
 
-A ideia é implementar algo simples, sem preocupações com dividendos, taxas administrativas ou outras incumbências que afetariam o montante total. Sendo assim, pressuponha que a compradora deseja saber o quanto teria ganhado ou perdido se tivesse investido seu dinheiro numa determinada quantidade de ações de uma empresa em alguma data no passado.
+### Clonagem
 
-# Requisitos técnicos da solução
+Clone o repositorio do seu fork
 
-- O serviço deverá ser implementado via HTTP, e o formato de serialização das requisições e respostas será JSON.
-- O frontend deverá ser um SPA(Single-Page Application) com o framework de sua escolha(React, Vue, Angular).
-- O backend já está desenvolvido, você precisará apenas criar o frontend e fazer a conexão entre as duas plataformas. Mas caso queira criar um backend também, fique à vontade.
-- Sua solução deverá ter testes automatizados.
-- Para obter dados de ações no backend, você poderá adquirir uma API_KEY gratuita no Alpha Vantage (https://www.alphavantage.co).
-- Ao final do desafio você deve enviar prints das telas funcionando.
-- O tratamento de erros não será explicitado nos endpoints. O candidato ou candidata poderá inferir casos que poderão gerar erros ou duplicidades nos dados, e tratá-los de acordo. A ausência de tratamento não desqualifica a proposta; a presença, no entanto, contará pontos a favor.
+```sh
+git clone <URL>
+```
 
-# Como enviar sua proposta
+### Instalação backend
 
-- Clone esse repositório (Você pode utilizar o backend que ja está desenvolvido);
-- Implemente sua solução, fazendo commits da maneira que faria em um projeto profissional;
-- Substitua este README com um específico para sua aplicação, indicando como rodá-la, e como executar os testes (fique à vontade para inserir mais detalhes técnicos, caso deseje, isso conta pontos à favor);
-- Nos envie o link do seu desafio finalizado, juntamente com os prints de tela.
+1. Entre na pasta server
+   ```sh
+   cd server
+   ```
+2. Copie o arquivo .env.example e renomeie para .env e preencha a API_KEY <br />
+   Obs: O token pode ser gerado no site Alpha Vantage [click aqui](https://www.alphavantage.co/support/#api-key)
+
+3. Instale os pacotes npm
+   ```sh
+   npm install
+   ```
+
+### Instalação frontend
+
+1. Entre na pasta front
+
+   ```sh
+   cd front
+   ```
+
+2. Instale os pacotes npm
+
+   ```sh
+   npm install
+   ```
+
+### Execução
+
+- Para executar em modo desenvolvimento
+  ```sh
+  npm start
+  ```
+
+### Testes
+
+- Para executar os tests
+  ```sh
+  npm run test
+  ```
+
+* Foram desenvolvidos testes básicos nos componentes somente para verificar o carregamento dos mesmos na tela
+
+### Rotas
+
+- /
+
+Rota raiz, onde pode ser feito a consulta dos dados das ações e projeção de ganho
+
+- /comparacao
+
+Rota para executar a comparação de preço de duas ou mais ações
+
+### Detalhes
+
+#### Responsividade
+
+Foi desenvolvido pensando na responsividade para uso também em sistemas mobile, com quebra e redução de tamanho de componentes
+
+#### Tema
+
+Foi desenvolvido uma feature para troca de temas entre tema claro e tema escuro através do hook useTheme
+
+#### API
+
+A consulta na API é feita pelo Axios
+
+#### Interfaces
+
+Foi desenvolvido arquivos separados de interface para cada retorno das requisições com dados
