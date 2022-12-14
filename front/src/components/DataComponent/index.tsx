@@ -16,8 +16,10 @@ export const DataComponent = ({
   desc: string;
 }) => {
   return (
-    <Container>
-      <SvgContainer style={{ background: color }}>{svg}</SvgContainer>
+    <Container role="contentinfo">
+      <SvgContainer style={{ background: color }} role="figure">
+        {svg}
+      </SvgContainer>
       <Title>{title}</Title>
       <Value>{value}</Value>
       <Desc>

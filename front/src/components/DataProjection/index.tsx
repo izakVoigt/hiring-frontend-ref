@@ -34,8 +34,8 @@ export const DataProjection = ({ data, calc, color, children }: { data: StockHis
     );
   }
   return (
-    <Container>
-      <DashboardContainer style={{ background: color }}>
+    <Container role="contentinfo">
+      <DashboardContainer style={{ background: color }} role="figure">
         <ResponsiveContainer width="100%" height="100%">
           {width !== undefined && width >= 800 ? (
             <LineChart width={300} height={200} data={data.prices} margin={{ top: 30, bottom: 10, left: 10, right: 70 }}>
@@ -57,7 +57,7 @@ export const DataProjection = ({ data, calc, color, children }: { data: StockHis
         </ResponsiveContainer>
       </DashboardContainer>
       {children}
-      <DataContainer>
+      <DataContainer role="textbox">
         <Data>
           <Title>Valor Atual</Title>
           <Value>{calc.lastPrice}</Value>

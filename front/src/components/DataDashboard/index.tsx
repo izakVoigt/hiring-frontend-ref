@@ -21,8 +21,8 @@ export const DataDashboard = ({
   const { width } = useWindowDimensions();
 
   return (
-    <Container>
-      <DashboardContainer style={{ background: color }}>
+    <Container role="contentinfo">
+      <DashboardContainer style={{ background: color }} role="figure">
         <ResponsiveContainer width="100%" height="100%">
           {width !== undefined && width >= 800 ? (
             <LineChart width={300} height={200} data={data.prices} margin={{ top: 30, bottom: 10, left: 10, right: 70 }}>
@@ -44,7 +44,7 @@ export const DataDashboard = ({
         </ResponsiveContainer>
       </DashboardContainer>
       <Title>{title}</Title>
-      <Desc>
+      <Desc role="textbox">
         {parseInt(percentage) > 0 ? (
           <>
             <PercentageGreen>+{percentage}% </PercentageGreen>

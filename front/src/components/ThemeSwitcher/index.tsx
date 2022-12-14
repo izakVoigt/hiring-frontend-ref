@@ -11,7 +11,7 @@ export const ThemeSwitcher = () => {
   return (
     <Container role="contentinfo">
       <Input type="checkbox" id="input" onChange={handleToggleTheme} />
-      <Label htmlFor="input" />
+      <Label htmlFor="input" role="switch" />
     </Container>
   );
 };
