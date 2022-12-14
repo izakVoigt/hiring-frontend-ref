@@ -16,12 +16,12 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   name: "dark",
   colors: {
-    primary: "#1e1e1e",
-    secundary: "#1e1e1e",
-    tertiary: "#f0f0f0",
+    primary: "#323232",
+    secundary: "#e1e1e1",
+    tertiary: "#0f0f0f",
     detail: "#6666ff",
-    fontDefault: "#323232",
+    fontDefault: "#cdcdcd",
     fontText: "#787878",
-    fontReverse: "#dcdcdc",
+    fontReverse: "#232323",
   },
 };
