@@ -1,145 +1,180 @@
+import { useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
+import SearchIcon from "@mui/icons-material/Search";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import { DataComponent, DataDashboard, DataProjection } from "../../components";
 import { Header, Nav } from "../../compound";
-import { Container, DataWraper, Title } from "./styles";
-
-const data = [
-  {
-    element: <ShowChartIcon />,
-    color: "linear-gradient(#6666ff, #1919ff)",
-    title: "Valor",
-    value: 16.32,
-    percentage: -3.24,
-    desc: "desde 01/01/2022",
-  },
-  {
-    element: <EqualizerIcon />,
-    color: "linear-gradient(#8A2BE2, #4B0082)",
-    title: "Volume",
-    value: 6904,
-    percentage: 2.42,
-    desc: "desde 01/01/2022",
-  },
-  {
-    element: <ArrowDropUpIcon />,
-    color: "linear-gradient(#00ff00, #009900)",
-    title: "Média das Máximas",
-    value: 18.32,
-    percentage: -1.02,
-    desc: "desde 01/01/2022",
-  },
-  {
-    element: <ArrowDropDownIcon />,
-    color: "linear-gradient(#ff0000, #990000)",
-    title: "Média das Mínimas",
-    value: 18.32,
-    percentage: 1.02,
-    desc: "desde 01/01/2022",
-  },
-];
-
-const dataDash = [
-  {
-    data: {
-      name: "Vale",
-      prices: [
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-      ],
-    },
-    color: "#00ff00",
-    title: "Resultado",
-    percentage: 2.18,
-    desc: "desde 01/12/2022",
-  },
-  {
-    data: {
-      name: "Vale",
-      prices: [
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-      ],
-    },
-    color: "#00ff00",
-    title: "Resultado",
-    percentage: 2.18,
-    desc: "desde 01/12/2022",
-  },
-  {
-    data: {
-      name: "Vale",
-      prices: [
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-        { opening: 32, low: 30, high: 34, closing: 32, pricedAt: "2022-12-12", volume: 33456 },
-      ],
-    },
-    color: "#00ff00",
-    title: "Resultado",
-    percentage: 2.18,
-    desc: "desde 01/12/2022",
-  },
-];
-
-const dataGain = {
-  name: "vale",
-  lastPrice: 16.12,
-  priceAtDate: 16.32,
-  purchasedAmount: 10,
-  purchasedAt: "2022-12-06",
-  capitalGains: -0.598764,
-};
+import { Container, DataWraper, Title, Input, InputWraper, Button } from "./styles";
+import { StockGains, StockHistory } from "../../interfaces";
+import { dateFormat, percentageChange } from "../../utils";
+import { toast } from "react-toastify";
+import { api } from "../../services";
 
 export const Home = () => {
+  const [search, setSearch] = useState("");
+  const [searchDate, setSearchDate] = useState("");
+  const [searchAmount, setSearchAmount] = useState("");
+  const [stockData, setStockData] = useState<StockHistory | null>(null);
+  const [calcStockData, setCalcStockData] = useState<StockHistory | null>(null);
+  const [calcData, setCalcData] = useState<StockGains | null>(null);
+
+  const getStockData = async () => {
+    if (search === "") {
+      toast.error("Informe uma ação na pesquisa");
+      return;
+    }
+
+    const from = dateFormat({ subAmount: 1, subUnitTime: "month" });
+    const to = dateFormat({});
+
+    setStockData(null);
+
+    await api
+      .get(`/stocks/${search}/history?from=${from}&to=$${to}`)
+      .then((res) => {
+        setStockData(res.data);
+        setSearch("");
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  };
+
+  const getCalcData = async () => {
+    if (searchDate === "") {
+      toast.error("Informe uma data");
+      return;
+    }
+    if (searchAmount === "") {
+      toast.error("Informa a quantidade");
+      return;
+    }
+
+    setCalcData(null);
+    setCalcStockData(null);
+
+    const to = dateFormat({});
+    const from = dateFormat({ date: searchDate });
+
+    await api
+      .get(`/stocks/${stockData?.name}/history?from=${from}&to=$${to}`)
+      .then((res) => {
+        setCalcStockData(res.data);
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+
+    await api
+      .get(`/stocks/${stockData?.name}/gains?purchasedAt=${from}&purchasedAmount=${searchAmount}`)
+      .then((res) => {
+        setCalcData(res.data);
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  };
   return (
     <>
       <Nav />
       <Container>
-        <Header />
+        <Header>
+          <InputWraper>
+            <Input type="search" placeholder="Pesquisar Ação" onChange={(e) => setSearch(e.target.value)} value={search} />
+            <Button onClick={getStockData}>
+              <SearchIcon />
+            </Button>
+          </InputWraper>
+        </Header>
         <Title>
           <DashboardIcon />
           DASHBOARD
         </Title>
-        <DataWraper>
-          {data.map((item, key) => (
-            <DataComponent
-              key={key}
-              svg={item.element}
-              color={item.color}
-              title={item.title}
-              value={item.value}
-              percentage={item.percentage}
-              desc={item.desc}
-            />
-          ))}
-        </DataWraper>
-        <DataWraper>
-          {dataDash.map((item, key) => (
-            <DataDashboard
-              key={key}
-              data={item.data}
-              color={item.color}
-              title={item.title}
-              percentage={item.percentage}
-              desc={item.desc}
-            />
-          ))}
-        </DataWraper>
-        <Title>
-          <ShowChartIcon />
-          PROJEÇÃO DE GANHOS
-        </Title>
-        <DataWraper>
-          <DataProjection data={dataDash[0].data} calc={dataGain} color="#00ff00">
-            <div></div>
-          </DataProjection>
-        </DataWraper>
+        <Title>{stockData?.name.toUpperCase()}</Title>
+        {stockData === null ? (
+          <></>
+        ) : (
+          <>
+            <DataWraper>
+              <DataComponent
+                svg={<ShowChartIcon />}
+                color="linear-gradient(#6666ff, #1919ff)"
+                title="Valor"
+                value={stockData?.prices[0].closing.toFixed(2)}
+                percentage={percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+              />
+              <DataComponent
+                svg={<EqualizerIcon />}
+                color="linear-gradient(#8A2BE2, #4B0082)"
+                title="Abertura"
+                value={stockData?.prices[0].opening.toFixed(2)}
+                percentage={percentageChange(stockData.prices[0].opening, stockData.prices.slice(-1)[0].opening)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+              />
+              <DataComponent
+                svg={<ArrowDropUpIcon />}
+                color="linear-gradient(#00ff00, #009900)"
+                title="Máxima"
+                value={stockData?.prices[0].high.toFixed(2)}
+                percentage={percentageChange(stockData.prices[0].high, stockData.prices.slice(-1)[0].high)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+              />
+              <DataComponent
+                svg={<ArrowDropDownIcon />}
+                color="linear-gradient(#ff0000, #990000)"
+                title="Mínima"
+                value={stockData?.prices[0].low.toFixed(2)}
+                percentage={percentageChange(stockData.prices[0].low, stockData.prices.slice(-1)[0].low)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+              />
+            </DataWraper>
+            <DataWraper>
+              <DataDashboard
+                data={stockData}
+                color="linear-gradient(#6666ff, #1919ff)"
+                title={`${parseInt(percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)) > 0 ? "Valorização" : "Desvalorização"}`}
+                percentage={percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+                dataKey="closing"
+              />
+              <DataDashboard
+                data={stockData}
+                color="linear-gradient(#00ff00, #009900)"
+                title="Máximas"
+                percentage={percentageChange(stockData.prices[0].high, stockData.prices.slice(-1)[0].high)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+                dataKey="high"
+              />
+              <DataDashboard
+                data={stockData}
+                color="linear-gradient(#ff0000, #990000)"
+                title="Mínimas"
+                percentage={percentageChange(stockData.prices[0].low, stockData.prices.slice(-1)[0].low)}
+                desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
+                dataKey="low"
+              />
+            </DataWraper>
+            <Title>
+              <ShowChartIcon />
+              PROJEÇÃO DE GANHOS
+            </Title>
+            <DataWraper>
+              <DataProjection data={calcStockData} calc={calcData} color="linear-gradient(#6666ff, #1919ff)">
+                <InputWraper>
+                  <Input type="date" placeholder="Informe uma data" onChange={(e) => setSearchDate(e.target.value)} value={searchDate} />
+                  <Input type="number" placeholder="Informe uma quantidade" onChange={(e) => setSearchAmount(e.target.value)} value={searchAmount} />
+                  <Button onClick={getCalcData}>
+                    <SearchIcon />
+                  </Button>
+                </InputWraper>
+              </DataProjection>
+            </DataWraper>
+          </>
+        )}
       </Container>
     </>
   );

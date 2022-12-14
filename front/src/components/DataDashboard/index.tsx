@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { StockHistory } from "../../interfaces";
 import { Container, DashboardContainer, Title, PercentageGreen, PercentageRed, Desc } from "./styles";
 
@@ -8,12 +8,14 @@ export const DataDashboard = ({
   title,
   percentage,
   desc,
+  dataKey,
 }: {
   data: StockHistory;
   color: string;
   title: string;
-  percentage: number;
+  percentage: string;
   desc: string;
+  dataKey: string;
 }) => {
   return (
     <Container>
@@ -22,14 +24,15 @@ export const DataDashboard = ({
           <LineChart width={300} height={200} data={data.prices} margin={{ top: 30, bottom: 10, left: 10, right: 70 }}>
             <XAxis dataKey="pricedAt" stroke="#fff" />
             <YAxis stroke="#fff" />
+            <CartesianGrid stroke="#fff" />
             <Tooltip />
-            <Line type="monotone" dataKey="closing" stroke="#fff" />
+            <Line type="monotone" dataKey={dataKey} stroke="#fff" />
           </LineChart>
         </ResponsiveContainer>
       </DashboardContainer>
       <Title>{title}</Title>
       <Desc>
-        {percentage > 0 ? (
+        {parseInt(percentage) > 0 ? (
           <>
             <PercentageGreen>+{percentage}% </PercentageGreen>
             {desc}

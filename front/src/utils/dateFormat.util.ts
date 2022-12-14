@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const dateFormat = (date?: string, subAmount?: number, subUnitTime?: moment.unitOfTime.DurationConstructor) => {
+export const dateFormat = ({date, subAmount, subUnitTime}: {date?: string, subAmount?: number, subUnitTime?: moment.unitOfTime.DurationConstructor}) => {
   if (subAmount && subUnitTime) {
     return `${moment().startOf("day").subtract(subAmount, subUnitTime)}`.substring(4).slice(0, -17) + "GMT-0300";
   }

@@ -11,8 +11,8 @@ export const DataComponent = ({
   svg: JSX.Element;
   color: string;
   title: string;
-  value: number;
-  percentage: number;
+  value: string;
+  percentage: string;
   desc: string;
 }) => {
   return (
@@ -21,7 +21,7 @@ export const DataComponent = ({
       <Title>{title}</Title>
       <Value>{value}</Value>
       <Desc>
-        {percentage > 0 ? (
+        {parseInt(percentage) > 0 ? (
           <>
             <PercentageGreen>+{percentage}% </PercentageGreen>
             {desc}
