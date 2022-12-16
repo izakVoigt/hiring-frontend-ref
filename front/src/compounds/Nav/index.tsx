@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
+import { CompareArrows, ShowChart } from "@mui/icons-material";
 import { useWindowDimensions } from "@hooks";
 import { Logo, Notification, ThemeSwitcher, User } from "@components";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
 import { Container, ContainerWraper, Division } from "./styles";
 
 export const Nav = () => {
@@ -14,11 +13,11 @@ export const Nav = () => {
         <Logo />
         <Division />
         <Link to="/">
-          <ShowChartIcon />
+          <ShowChart />
           <p>Ações</p>
         </Link>
         <Link to="/comparacao">
-          <CompareArrowsIcon />
+          <CompareArrows />
           <p>Comparação de Ações</p>
         </Link>
       </ContainerWraper>

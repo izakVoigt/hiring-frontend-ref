@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from "@mui/icons-material/Close";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import { Add, Close, CompareArrows } from "@mui/icons-material";
 import { api } from "@services";
 import { StockLastPrice } from "@interfaces";
 import { Header, Nav } from "@compounds";
@@ -53,7 +51,7 @@ export const Compare = () => {
       <Container>
         <Header />
         <Title>
-          <CompareArrowsIcon />
+          <CompareArrows />
           COMPARAÇÃO DE AÇÕES
         </Title>
         <DataWraper>
@@ -66,17 +64,17 @@ export const Compare = () => {
                   setSearch("");
                 }}
               >
-                <AddIcon />
+                <Add />
               </Button>
               <Button onClick={getPrices}>
-                <CompareArrowsIcon />
+                <CompareArrows />
               </Button>
             </InputWraper>
             {stockList.map((item, key) => (
               <StockName key={key}>
                 {item.toUpperCase()}
                 <Button onClick={() => removeItem(key)}>
-                  <CloseIcon />
+                  <Close />
                 </Button>
               </StockName>
             ))}

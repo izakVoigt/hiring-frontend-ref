@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
-import SearchIcon from "@mui/icons-material/Search";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
+import { ArrowDropDown, ArrowDropUp, Dashboard, Equalizer, Search, ShowChart } from "@mui/icons-material";
 import { api } from "@services";
 import { dateFormat, percentageChange } from "@utils";
 import { StockGains, StockHistory } from "@interfaces";
@@ -84,12 +79,12 @@ export const Home = () => {
           <InputWraper>
             <Input type="search" placeholder="Pesquisar Ação" onChange={(e) => setSearch(e.target.value)} value={search} />
             <Button onClick={getStockData}>
-              <SearchIcon />
+              <Search />
             </Button>
           </InputWraper>
         </Header>
         <Title>
-          <DashboardIcon />
+          <Dashboard />
           DASHBOARD
         </Title>
         <Title>{stockData?.name.toUpperCase()}</Title>
@@ -99,7 +94,7 @@ export const Home = () => {
           <>
             <DataWraper>
               <DataComponent
-                svg={<ShowChartIcon />}
+                svg={<ShowChart />}
                 color="linear-gradient(#6666ff, #1919ff)"
                 title="Valor"
                 value={stockData?.prices[0].closing.toFixed(2)}
@@ -107,7 +102,7 @@ export const Home = () => {
                 desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
               />
               <DataComponent
-                svg={<EqualizerIcon />}
+                svg={<Equalizer />}
                 color="linear-gradient(#8A2BE2, #4B0082)"
                 title="Abertura"
                 value={stockData?.prices[0].opening.toFixed(2)}
@@ -115,7 +110,7 @@ export const Home = () => {
                 desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
               />
               <DataComponent
-                svg={<ArrowDropUpIcon />}
+                svg={<ArrowDropUp />}
                 color="linear-gradient(#00ff00, #009900)"
                 title="Máxima"
                 value={stockData?.prices[0].high.toFixed(2)}
@@ -123,7 +118,7 @@ export const Home = () => {
                 desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
               />
               <DataComponent
-                svg={<ArrowDropDownIcon />}
+                svg={<ArrowDropDown />}
                 color="linear-gradient(#ff0000, #990000)"
                 title="Mínima"
                 value={stockData?.prices[0].low.toFixed(2)}
@@ -158,7 +153,7 @@ export const Home = () => {
               />
             </DataWraper>
             <Title>
-              <ShowChartIcon />
+              <ShowChart />
               PROJEÇÃO DE GANHOS
             </Title>
             <DataWraper>
@@ -167,7 +162,7 @@ export const Home = () => {
                   <Input type="date" placeholder="Informe uma data" onChange={(e) => setSearchDate(e.target.value)} value={searchDate} />
                   <Input type="number" placeholder="Informe uma quantidade" onChange={(e) => setSearchAmount(e.target.value)} value={searchAmount} />
                   <Button onClick={getCalcData}>
-                    <SearchIcon />
+                    <Search />
                   </Button>
                 </InputWraper>
               </DataProjection>

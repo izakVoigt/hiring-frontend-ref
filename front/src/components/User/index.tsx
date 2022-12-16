@@ -1,10 +1,10 @@
-import PersonIcon from "@mui/icons-material/Person";
+import { Person } from "@mui/icons-material";
 import { Container } from "./styles";
 
 export const User = () => {
   return (
     <Container role="contentinfo">
-      <PersonIcon />
+      <Person />
     </Container>
   );
 };

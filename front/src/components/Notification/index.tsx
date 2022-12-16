@@ -1,10 +1,10 @@
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { NotificationsNone } from "@mui/icons-material";
 import { Container } from "./styles";
 
 export const Notification = () => {
   return (
     <Container role="contentinfo">
-      <NotificationsNoneIcon />
+      <NotificationsNone />
     </Container>
   );
 };
