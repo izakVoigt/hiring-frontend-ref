@@ -1,6 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { StockHistory } from "../../interfaces";
-import { useWindowDimensions } from "../../hooks";
+import { StockHistory } from "@interfaces";
+import { useWindowDimensions } from "@hooks";
 import { Container, DashboardContainer, Title, PercentageGreen, PercentageRed, Desc } from "./styles";
 
 export const DataDashboard = ({

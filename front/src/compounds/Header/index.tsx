@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { useWindowDimensions } from "../../hooks";
-import { Notification, ThemeSwitcher, User } from "../../components";
+import { useWindowDimensions } from "@hooks";
+import { Notification, ThemeSwitcher, User } from "@components";
 import { Container } from "./styles";
 
 export const Header = ({ children }: { children?: ReactNode }) => {

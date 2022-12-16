@@ -1,4 +1,4 @@
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "@hooks";
 import { Container, Input, Label } from "./styles";
 
 export const ThemeSwitcher = () => {

@@ -1,4 +1,4 @@
-import { lightTheme } from "../styles";
+import { lightTheme } from "@styles";
 
 type CustomTheme = typeof lightTheme;
 

@@ -1,17 +1,17 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import SearchIcon from "@mui/icons-material/Search";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
-import { DataComponent, DataDashboard, DataProjection } from "../../components";
-import { Header, Nav } from "../../compound";
+import { api } from "@services";
+import { dateFormat, percentageChange } from "@utils";
+import { StockGains, StockHistory } from "@interfaces";
+import { DataComponent, DataDashboard, DataProjection } from "@components";
+import { Header, Nav } from "@compounds";
 import { Container, DataWraper, Title, Input, InputWraper, Button } from "./styles";
-import { StockGains, StockHistory } from "../../interfaces";
-import { dateFormat, percentageChange } from "../../utils";
-import { toast } from "react-toastify";
-import { api } from "../../services";
 
 export const Home = () => {
   const [search, setSearch] = useState("");

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useCallback, useContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { Theme, ThemeContextData } from "../interfaces";
-import { lightTheme, darkTheme } from "../styles";
+import { Theme, ThemeContextData } from "@interfaces";
+import { lightTheme, darkTheme } from "@styles";
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 

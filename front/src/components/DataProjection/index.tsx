@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { StockHistory, StockGains } from "../../interfaces";
-import { useWindowDimensions } from "../../hooks";
+import { StockHistory, StockGains } from "@interfaces";
+import { useWindowDimensions } from "@hooks";
 import { Container, DashboardContainer, Title, Value, Data, DataContainer } from "./styles";
 
 export const DataProjection = ({ data, calc, color, children }: { data: StockHistory | null; calc: StockGains | null; color: string; children: ReactNode }) => {

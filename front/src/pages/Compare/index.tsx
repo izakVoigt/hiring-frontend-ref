@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-import { Header, Nav } from "../../compound";
+import { api } from "@services";
+import { StockLastPrice } from "@interfaces";
+import { Header, Nav } from "@compounds";
 import { Container, Title, DataWraper, DataContainer, DashboardContainer, StockAdder, StockName, InputWraper, Input, Button } from "./styles";
-import { toast } from "react-toastify";
-import { StockLastPrice } from "../../interfaces";
-import { api } from "../../services";
 
 export const Compare = () => {
   const [search, setSearch] = useState("");

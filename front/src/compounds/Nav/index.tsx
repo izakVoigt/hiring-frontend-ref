@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useWindowDimensions } from "../../hooks";
-import { Logo, Notification, ThemeSwitcher, User } from "../../components";
+import { useWindowDimensions } from "@hooks";
+import { Logo, Notification, ThemeSwitcher, User } from "@components";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import { Container, ContainerWraper, Division } from "./styles";
