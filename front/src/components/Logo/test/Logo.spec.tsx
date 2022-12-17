@@ -8,4 +8,11 @@ describe("Logo component test", () => {
     const component = screen.getByRole("contentinfo");
     expect(component).toBeInTheDocument();
   });
+
+  it("should load the text on screen", () => {
+    render(<Logo />);
+
+    const component = screen.getByRole("textbox");
+    expect(component).toBeInTheDocument();
+  });
 });

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../../styles";
+import { lightTheme } from "@styles";
 import { Notification } from "..";
 
 describe("Notification component test", () => {
