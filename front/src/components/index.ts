@@ -1,3 +1,4 @@
+export * from "./DashboardWraper/index";
 export * from "./DataComponent/index";
 export * from "./DataDashboard/index";
 export * from "./DataProjection/index";
@@ -5,4 +6,5 @@ export * from "./Logo/index";
 export * from "./Notification/index";
 export * from "./PageContentWraper/index";
 export * from "./ThemeSwitcher/index";
+export * from "./Title/index";
 export * from "./User/index";
