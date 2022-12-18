@@ -4,6 +4,7 @@
     "paths": {
       "@components": ["./components/index"],
       "@compounds": ["./compounds/index"],
+      "@contexts": ["./contexts/index"],
       "@hooks": ["./hooks/index"],
       "@interfaces": ["./interfaces/index"],
       "@pages": ["./pages/index"],

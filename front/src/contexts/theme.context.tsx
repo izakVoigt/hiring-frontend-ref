@@ -1,11 +1,9 @@
-import { createContext, ReactNode, useCallback, useContext, useState } from "react";
+import { createContext, ReactNode, useCallback, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { Theme, ThemeContextData } from "@interfaces";
 import { lightTheme, darkTheme } from "@styles";
 
-const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
-
-export const useTheme = () => useContext(ThemeContext);
+export const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(lightTheme);

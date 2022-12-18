@@ -1,3 +1,4 @@
+export * from "./ContextStockPrice.interface";
 export * from "./Stock.interface";
 export * from "./StockGains.interface";
 export * from "./StockHistory.interface";

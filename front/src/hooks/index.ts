@@ -1,2 +1,2 @@
-export * from "./useTheme";
-export * from "./useWindowDimentions";
+export * from "./useTheme.hook";
+export * from "./useWindowDimentions.hook";
