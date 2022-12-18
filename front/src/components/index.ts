@@ -4,6 +4,7 @@ export * from "./DataComponent/index";
 export * from "./DataDashboard/index";
 export * from "./DataProjection/index";
 export * from "./Input/index";
+export * from "./InputWraper/index";
 export * from "./Loading/index";
 export * from "./Logo/index";
 export * from "./Notification/index";
