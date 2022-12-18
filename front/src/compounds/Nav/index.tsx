@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import { CompareArrows, ShowChart } from "@mui/icons-material";
 import { useWindowDimensions } from "@hooks";
-import { Logo, Notification, ThemeSwitcher, User } from "@components";
-import { Container, ContainerWraper, Division } from "./styles";
+import { Division, Logo, Notification, NavContainer, NavContainerWraper, ThemeSwitcher, User } from "@components";
 
 export const Nav = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <Container>
-      <ContainerWraper>
+    <NavContainer>
+      <NavContainerWraper>
         <Logo />
         <Division />
         <Link to="/">
@@ -20,16 +19,16 @@ export const Nav = () => {
           <CompareArrows />
           <p>Comparação de Ações</p>
         </Link>
-      </ContainerWraper>
+      </NavContainerWraper>
       {width !== undefined && width >= 800 ? (
         <></>
       ) : (
-        <ContainerWraper>
+        <NavContainerWraper>
           <User />
           <Notification />
           <ThemeSwitcher />
-        </ContainerWraper>
+        </NavContainerWraper>
       )}
-    </Container>
+    </NavContainer>
   );
 };
