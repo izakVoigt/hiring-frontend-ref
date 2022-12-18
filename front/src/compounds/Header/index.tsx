@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
 import { useWindowDimensions } from "@hooks";
-import { Notification, ThemeSwitcher, User } from "@components";
-import { Container } from "./styles";
+import { HeaderContainer, Notification, ThemeSwitcher, User } from "@components";
+import { IHeaderCompound } from "./types";
 
-export const Header = ({ children }: { children?: ReactNode }) => {
+export const Header = ({ children }: IHeaderCompound) => {
   const { width } = useWindowDimensions();
 
   return (
-    <Container>
+    <HeaderContainer>
       {width !== undefined && width >= 800 ? (
         <>
           {children}
@@ -18,6 +17,6 @@ export const Header = ({ children }: { children?: ReactNode }) => {
       ) : (
         <>{children}</>
       )}
-    </Container>
+    </HeaderContainer>
   );
 };
