@@ -4,10 +4,10 @@ import { api } from "./api.service";
 import { dateFormat } from "@utils";
 import { StockGains } from "@interfaces";
 
-export const getStockGains: (name: string, date: string, amount: number) => Promise<StockGains> = async (
+export const getStockGains: (name: string, date: string, amount: string) => Promise<StockGains> = async (
   name: string,
   date: string,
-  amount: number
+  amount: string
 ) => {
   const from = dateFormat({ date });
 

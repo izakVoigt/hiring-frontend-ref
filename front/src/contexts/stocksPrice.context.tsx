@@ -9,9 +9,12 @@ export const StockPriceContext = createContext<IStockPriceContext>({
 export const StockPriceContextProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<IStockPrice>();
 
-  const updateStockPrice = useCallback((stockData: IStockPrice) => {
-    setData(stockData);
-  }, []);
+  const updateStockPrice = useCallback(
+    (stockData: IStockPrice) => {
+      setData(stockData);
+    },
+    [data]
+  );
 
   return (
     <StockPriceContext.Provider
