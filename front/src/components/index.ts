@@ -10,6 +10,7 @@ export * from "./InputWraper/index";
 export * from "./Loading/index";
 export * from "./Logo/index";
 export * from "./NavContainer/index";
+export * from "./NavContainerWraper/index";
 export * from "./Notification/index";
 export * from "./PageContentWraper/index";
 export * from "./ThemeSwitcher/index";
