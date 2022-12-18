@@ -4,7 +4,7 @@ import { ArrowDropDown, ArrowDropUp, Dashboard, Equalizer, Search, ShowChart } f
 import { api } from "@services";
 import { dateFormat, percentageChange } from "@utils";
 import { StockGains, StockHistory } from "@interfaces";
-import { DataComponent, DataDashboard, DataProjection } from "@components";
+import { DataComponent, DataDashboard, DataProjection, Loading } from "@components";
 import { Header, Nav } from "@compounds";
 import { Container, DataWraper, Title, Input, InputWraper, Button } from "./styles";
 
@@ -77,10 +77,16 @@ export const Home = () => {
       <Container>
         <Header>
           <InputWraper>
-            <Input type="search" placeholder="Pesquisar Ação" onChange={(e) => setSearch(e.target.value)} value={search} />
+            <Input
+              type="search"
+              placeholder="Pesquisar Ação"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
             <Button onClick={getStockData}>
               <Search />
             </Button>
+            <Loading />
           </InputWraper>
         </Header>
         <Title>
@@ -130,7 +136,11 @@ export const Home = () => {
               <DataDashboard
                 data={stockData}
                 color="linear-gradient(#6666ff, #1919ff)"
-                title={`${parseInt(percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)) > 0 ? "Valorização" : "Desvalorização"}`}
+                title={`${
+                  parseInt(percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)) > 0
+                    ? "Valorização"
+                    : "Desvalorização"
+                }`}
                 percentage={percentageChange(stockData.prices[0].closing, stockData.prices.slice(-1)[0].closing)}
                 desc={`desde ${stockData.prices.slice(-1)[0].pricedAt}`}
                 dataKey="closing"
@@ -159,8 +169,18 @@ export const Home = () => {
             <DataWraper>
               <DataProjection data={calcStockData} calc={calcData} color="linear-gradient(#6666ff, #1919ff)">
                 <InputWraper>
-                  <Input type="date" placeholder="Informe uma data" onChange={(e) => setSearchDate(e.target.value)} value={searchDate} />
-                  <Input type="number" placeholder="Informe uma quantidade" onChange={(e) => setSearchAmount(e.target.value)} value={searchAmount} />
+                  <Input
+                    type="date"
+                    placeholder="Informe uma data"
+                    onChange={(e) => setSearchDate(e.target.value)}
+                    value={searchDate}
+                  />
+                  <Input
+                    type="number"
+                    placeholder="Informe uma quantidade"
+                    onChange={(e) => setSearchAmount(e.target.value)}
+                    value={searchAmount}
+                  />
                   <Button onClick={getCalcData}>
                     <Search />
                   </Button>
