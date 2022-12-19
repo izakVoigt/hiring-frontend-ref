@@ -1,10 +1,9 @@
-import { ReactNode } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { StockHistory, StockGains } from "@interfaces";
 import { useWindowDimensions } from "@hooks";
+import { IDataProjectionComponent } from "./types";
 import { Container, DashboardContainer, Title, Value, Data, DataContainer } from "./styles";
 
-export const DataProjection = ({ data, calc, color, children }: { data?: StockHistory; calc?: StockGains; color: string; children: ReactNode }) => {
+export const DataProjection = ({ data, calc, color, children }: IDataProjectionComponent) => {
   const { width } = useWindowDimensions();
 
   if (!calc || !data) {

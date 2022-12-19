@@ -1,23 +1,9 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { StockHistory } from "@interfaces";
 import { useWindowDimensions } from "@hooks";
+import { IDataDashboardComponent } from "./types";
 import { Container, DashboardContainer, Title, PercentageGreen, PercentageRed, Desc } from "./styles";
 
-export const DataDashboard = ({
-  data,
-  color,
-  title,
-  percentage,
-  desc,
-  dataKey,
-}: {
-  data: StockHistory;
-  color: string;
-  title: string;
-  percentage: string;
-  desc: string;
-  dataKey: string;
-}) => {
+export const DataDashboard = ({ data, color, title, percentage, desc, dataKey }: IDataDashboardComponent) => {
   const { width } = useWindowDimensions();
 
   return (

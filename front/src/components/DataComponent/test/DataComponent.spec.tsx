@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import { ArrowDropDown } from "@mui/icons-material";
 import { lightTheme } from "@styles";
 import { DataComponent } from "..";
 

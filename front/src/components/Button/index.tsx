@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { IButtonComponent } from "./types";
 import { Container } from "./styles";
 
-export const Button = ({ onClick, children }: { onClick: () => any; children: ReactNode }) => {
+export const Button = ({ onClick, children }: IButtonComponent) => {
   return (
     <Container onClick={onClick} role="contentinfo">
       {children}

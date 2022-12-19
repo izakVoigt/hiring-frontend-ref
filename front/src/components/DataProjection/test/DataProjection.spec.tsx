@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../../styles";
+import { StockHistory, StockGains } from "@interfaces";
+import { lightTheme } from "@styles";
 import { DataProjection } from "..";
-import { StockHistory, StockGains } from "../../../interfaces";
 
 describe("DataProjection component test", () => {
   const mockData: StockHistory = {

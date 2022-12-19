@@ -1,20 +1,7 @@
+import { IDataComponent } from "./types";
 import { Container, SvgContainer, Title, Value, PercentageGreen, PercentageRed, Desc } from "./styles";
 
-export const DataComponent = ({
-  svg,
-  color,
-  title,
-  value,
-  percentage,
-  desc,
-}: {
-  svg: JSX.Element;
-  color: string;
-  title: string;
-  value: string;
-  percentage: string;
-  desc: string;
-}) => {
+export const DataComponent = ({ svg, color, title, value, percentage, desc }: IDataComponent) => {
   return (
     <Container role="contentinfo">
       <SvgContainer style={{ background: color }} role="figure">

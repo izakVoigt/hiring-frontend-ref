@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { IDashboardWraperComponent } from "./types";
 import { Container } from "./styles";
 
-export const DashboardWraper = ({ children }: { children: ReactNode | ReactNode[] }) => {
+export const DashboardWraper = ({ children }: IDashboardWraperComponent) => {
   return <Container role="contentinfo">{children}</Container>;
 };

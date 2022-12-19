@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../../styles";
+import { StockHistory } from "@interfaces";
+import { lightTheme } from "@styles";
 import { DataDashboard } from "..";
-import { StockHistory } from "../../../interfaces";
 
 describe("DataDashboard component test", () => {
   const mockData: StockHistory = {

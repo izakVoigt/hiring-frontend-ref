@@ -4,7 +4,7 @@ import { Container, DashboardContainer } from "./styles";
 
 export const DataDashboardCompare = ({ data }: IDataDashboardCompareComponent) => {
   return (
-    <Container>
+    <Container role="contentinfo">
       <DashboardContainer>
         {!data ? (
           <></>
