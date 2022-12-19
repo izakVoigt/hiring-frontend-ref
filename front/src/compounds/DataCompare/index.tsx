@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Add, Close, CompareArrows } from "@mui/icons-material";
-import { Button, Input, InputWraper, StockAdder, StockListItem } from "@components";
+import { Button, Input, InputWraper, Loading, StockAdder, StockListItem } from "@components";
 import { useStockCompare } from "@hooks";
 import { getStockCompare } from "@services";
 
@@ -9,6 +9,7 @@ export const DataCompare = () => {
   const stockContext = useStockCompare();
   const [search, setSearch] = useState("");
   const [stockList, setStockList] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const addItem = () => {
     if (search === "") {
@@ -24,12 +25,16 @@ export const DataCompare = () => {
   };
 
   const getStockPrices = async () => {
+    setIsLoading(true);
+
     const req = await getStockCompare(stockList);
 
     if (typeof req === "string") {
       toast.error(req);
       return;
     }
+
+    setIsLoading(false);
 
     stockContext.updateStockCompare({ StockCompare: req });
   };
@@ -46,9 +51,13 @@ export const DataCompare = () => {
         >
           <Add />
         </Button>
-        <Button onClick={getStockPrices}>
-          <CompareArrows />
-        </Button>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Button onClick={getStockPrices}>
+            <CompareArrows />
+          </Button>
+        )}
       </InputWraper>
       {stockList.map((item, key) => (
         <StockListItem key={key}>

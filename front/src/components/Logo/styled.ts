@@ -17,7 +17,7 @@ export const Container = styled.div`
   @media (max-width: 800px) {
     padding: 5px 10px;
 
-    p {
+    h1 {
       display: none;
     }
   }

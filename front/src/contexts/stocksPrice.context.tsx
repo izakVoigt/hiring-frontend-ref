@@ -2,7 +2,7 @@ import { ReactNode, createContext, useCallback, useState } from "react";
 import { IStockPrice, IStockPriceContext } from "@interfaces";
 
 export const StockPriceContext = createContext<IStockPriceContext>({
-  StockData: { StockHistory: undefined, StockProjection: undefined },
+  StockData: { StockHistory: undefined, StockProjection: undefined, StockProjectionHistory: undefined },
   updateStockPrice: () => {},
 });
 
@@ -19,7 +19,7 @@ export const StockPriceContextProvider = ({ children }: { children: ReactNode })
   return (
     <StockPriceContext.Provider
       value={{
-        StockData: { StockHistory: data?.StockHistory, StockProjection: data?.StockProjection },
+        StockData: { StockHistory: data?.StockHistory, StockProjection: data?.StockProjection, StockProjectionHistory: data?.StockProjectionHistory },
         updateStockPrice,
       }}
     >

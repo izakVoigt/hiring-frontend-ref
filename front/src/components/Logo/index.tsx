@@ -5,7 +5,7 @@ export const Logo = () => {
   return (
     <Container role="contentinfo">
       <AccountBalance />
-      <p role="textbox">CORRETORA X</p>
+      <h1 role="textbox">CORRETORA X</h1>
     </Container>
   );
 };

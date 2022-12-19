@@ -11,11 +11,7 @@ export const DataProjectionCompound = () => {
 
   return (
     <DashboardWraper>
-      <DataProjection
-        data={stockContext.StockData.StockHistory}
-        calc={stockContext.StockData.StockProjection}
-        color="linear-gradient(#6666ff, #1919ff)"
-      >
+      <DataProjection data={stockContext.StockData.StockProjectionHistory} calc={stockContext.StockData.StockProjection} color="linear-gradient(#6666ff, #1919ff)">
         <DataProjectionSearch />
       </DataProjection>
     </DashboardWraper>
