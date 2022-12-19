@@ -7,9 +7,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
 
   @media (max-width: 800px) {
     gap: 40px;
+    flex-wrap: wrap;
   }
 `;

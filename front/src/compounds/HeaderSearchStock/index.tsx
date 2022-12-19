@@ -23,13 +23,7 @@ export const HeaderSearchStock = () => {
 
   return (
     <InputWraper>
-      <Input
-        type="search"
-        placeholder="Pesquisar ação"
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
-        width={260}
-      />
+      <Input type="search" placeholder="Pesquisar ação" onChange={(e) => setSearch(e.target.value)} value={search} />
       <Button onClick={getStock}>
         <Search />
       </Button>

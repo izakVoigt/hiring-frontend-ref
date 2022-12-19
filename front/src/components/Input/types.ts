@@ -3,5 +3,4 @@ export interface IInputComponent {
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => any;
   value: string | number;
-  width: number;
 }

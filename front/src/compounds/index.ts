@@ -1,3 +1,5 @@
+export * from "./DataCompare/index";
+export * from "./DataCompareDashboard/index";
 export * from "./DataCompound/index";
 export * from "./DataDashboardCompound/index";
 export * from "./DataProjectionCompound/index";

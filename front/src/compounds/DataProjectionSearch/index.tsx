@@ -27,19 +27,12 @@ export const DataProjectionSearch = () => {
 
   return (
     <InputWraper>
-      <Input
-        type="date"
-        placeholder="Informe uma data"
-        onChange={(e) => setDate(e.target.value)}
-        value={date}
-        width={240}
-      />
+      <Input type="date" placeholder="Informe uma data" onChange={(e) => setDate(e.target.value)} value={date} />
       <Input
         type="number"
         placeholder="Informe uma quantidade"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
-        width={240}
       />
       <Button onClick={getStock}>
         <Search />
