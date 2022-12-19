@@ -57,32 +57,37 @@ git clone <URL>
   npm run test
   ```
 
-* Foram desenvolvidos testes básicos nos componentes somente para verificar o carregamento dos mesmos na tela
+* Foram desenvolvidos testes unitários básicos nos componentes somente para verificar o carregamento dos mesmos na tela;
+* Foram desenvolvidos testes de integração nos serviços para garantir o funcionamento pleno e tratamento de erros dos mesmos;
 
 ### Rotas
 
 - /
 
-Rota raiz, onde pode ser feito a consulta dos dados das ações e projeção de ganho
+Rota raiz, onde pode ser feito a consulta dos dados das ações e projeção de ganho;
 
 - /comparacao
 
-Rota para executar a comparação de preço de duas ou mais ações
+Rota para executar a comparação de preço de duas ou mais ações;
 
 ### Detalhes
 
 #### Responsividade
 
-Foi desenvolvido pensando na responsividade para uso também em sistemas mobile, com quebra e redução de tamanho de componentes
+Foi desenvolvido pensando na responsividade para uso também em sistemas mobile, com quebra e redução de tamanho de componentes;
 
 #### Tema
 
-Foi desenvolvido uma feature para troca de temas entre tema claro e tema escuro através do hook useTheme
+Foi desenvolvido uma feature para troca de temas entre tema claro e tema escuro através do hook useTheme;
 
 #### API
 
-A consulta na API é feita pelo Axios
+A consulta na API é feita pelo Axios;
 
 #### Interfaces
 
-Foi desenvolvido arquivos separados de interface para cada retorno das requisições com dados
+Foi desenvolvido arquivos separados de interface para cada retorno das requisições com dados;
+
+#### Context API
+
+Foi desenvolvido um contexto para cada página para ser alimentado quando pesquisado por determinada ação e consumido pelos componentes filhos dos mesmos juntamente com seus respectivos hooks;
